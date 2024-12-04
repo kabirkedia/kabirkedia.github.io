@@ -157,3 +157,28 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+document.querySelectorAll('.open-modal').forEach(item => {
+  item.addEventListener('click', function (event) {
+    event.preventDefault();
+    const modalId = this.getAttribute('data-modal-id');
+    document.getElementById('modal-' + modalId).style.display = "block";
+  });
+});
+
+document.querySelectorAll('.close-modal').forEach(item => {
+  item.addEventListener('click', function () {
+    const modalId = this.getAttribute('data-modal-id');
+    document.getElementById('modal-' + modalId).style.display = "none";
+  });
+});
+
+// Close modal when clicking outside of the modal content
+window.onclick = function(event) {
+  if (event.target.classList.contains('modal')) {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+      modal.style.display = "none";
+    });
+  }
+};
